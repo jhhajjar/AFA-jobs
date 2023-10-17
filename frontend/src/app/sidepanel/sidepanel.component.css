@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 3em;
+    /* height: 100%; */
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.toggle-item {
+    width: 100%
+}

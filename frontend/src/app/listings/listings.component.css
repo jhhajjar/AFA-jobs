@@ -1,0 +1,16 @@
+.example-card {
+    list-style-type: none;
+    max-width: 600px;
+    margin: 0 0 2em 0;
+    padding: 0;
+    width: 50em;
+}
+
+.listing-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-actions {
+    justify-content: right;
+}

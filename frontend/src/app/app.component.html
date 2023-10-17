@@ -1,0 +1,12 @@
+<app-toolbar></app-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #drawer class="toggles" opened mode="side">
+        <app-sidepanel></app-sidepanel>
+    </mat-sidenav>
+    <mat-sidenav-content class="main-content">
+        <div *ngIf="!drawer.opened">
+            <button mat-button (click)="drawer.toggle()">Toggle</button>
+        </div>
+        <app-listings></app-listings>
+    </mat-sidenav-content>
+</mat-sidenav-container>
