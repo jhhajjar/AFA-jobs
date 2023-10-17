@@ -1,11 +1,11 @@
 <app-toolbar></app-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav #drawer class="toggles" opened mode="side">
+    <mat-sidenav #drawer class="toggles" mode="side" opened>
         <app-sidepanel></app-sidepanel>
     </mat-sidenav>
     <mat-sidenav-content class="main-content">
         <div *ngIf="!drawer.opened">
-            <button mat-button (click)="drawer.toggle()">Toggle</button>
+            <button mat-raised-button (click)="drawer.toggle()">Toggle Filters</button>
         </div>
         <app-listings></app-listings>
     </mat-sidenav-content>

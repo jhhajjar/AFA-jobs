@@ -17,13 +17,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddjobmodalComponent } from './addjobmodal/addjobmodal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListingsComponent,
     ToolbarComponent,
-    SidepanelComponent
+    SidepanelComponent,
+    AddjobmodalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import { MatInputModule } from '@angular/material/input';
     MatSidenavModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [
     JobsService

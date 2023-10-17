@@ -1,0 +1,14 @@
+.add-job-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* width: 600px; */
+}
+
+.add-job-modal {
+    width: 600px;
+}
+
+.add-job-modal-item {
+    width: 100%;
+}
