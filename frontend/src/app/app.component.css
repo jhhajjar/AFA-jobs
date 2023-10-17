@@ -1,7 +1,7 @@
 .toggles {
     background-color: #fff;
     width: 20%;
-    overflow: -moz-hidden-unscrollable;
+    overflow: hidden;
 }
 
 .main-content {
