@@ -9,6 +9,7 @@
 .listing-container {
     display: flex;
     justify-content: center;
+    min-height: 400px;
 }
 
 .card-actions {

@@ -39,7 +39,6 @@ func setupDB() *sql.DB {
 // - zip code
 // - expertise
 func getAllJobs(c *gin.Context) {
-	fmt.Println("we here?")
 	var sqlq string = `
 		SELECT id, title, description, author, location, contact_email
 		FROM jobs

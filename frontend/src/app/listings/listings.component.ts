@@ -9,6 +9,7 @@ import { JobsService } from '../jobs.service';
 })
 export class ListingsComponent implements OnInit {
   jobs: Job[] = []
+  loading: boolean = true
 
   constructor(
     private jobsService: JobsService
@@ -18,6 +19,7 @@ export class ListingsComponent implements OnInit {
     this.jobsService.getJobs().subscribe(
       response => {
         this.jobs = response
+        this.loading = false
       }
     )
   }
