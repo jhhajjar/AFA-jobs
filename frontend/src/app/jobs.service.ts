@@ -23,4 +23,9 @@ export class JobsService {
     const job = this.httpClient.get<Job>(`${this.backendURL}/job/${id}`)
     return job
   }
+
+  postJob(newJob: Job): Observable<Job> {
+    console.log(JSON.stringify(newJob));
+    return this.httpClient.post<Job>(`${this.backendURL}/createJob`, JSON.stringify(newJob))
+  }
 }

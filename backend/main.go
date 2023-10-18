@@ -19,11 +19,6 @@ type job struct {
 	ContactEmail string `json:"contact_email"`
 }
 
-const (
-	DB_PORT = 5432
-	DB_USER = "postgres"
-)
-
 func checkErr(err error) {
 	if err != nil {
 		panic(err)
@@ -44,6 +39,7 @@ func setupDB() *sql.DB {
 // - zip code
 // - expertise
 func getAllJobs(c *gin.Context) {
+	fmt.Println("we here?")
 	var sqlq string = `
 		SELECT id, title, description, author, location, contact_email
 		FROM jobs
@@ -120,7 +116,6 @@ func retrieveJob(c *gin.Context) {
 // - contact
 func createJob(c *gin.Context) {
 	var newJob job
-
 	err := c.BindJSON(&newJob)
 	checkErr(err)
 

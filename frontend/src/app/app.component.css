@@ -5,7 +5,6 @@
 }
 
 .main-content {
-    height: 100vh;
+    max-height: 100vh;
     background-color: #eee;
-    overflow-y: auto;
 }

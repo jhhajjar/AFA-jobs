@@ -4,24 +4,29 @@
         <div class="add-job-form">
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Title</mat-label>
-                <input matInput>
+                <input [(ngModel)]="newJob.title" matInput required>
             </mat-form-field>
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Description</mat-label>
-                <textarea matInput></textarea>
+                <textarea [(ngModel)]="newJob.description" matInput required></textarea>
+            </mat-form-field>
+            <mat-form-field class="add-job-modal-item">
+                <mat-label>Author</mat-label>
+                <input [(ngModel)]="newJob.author" matInput required>
             </mat-form-field>
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Location</mat-label>
-                <input matInput>
+                <input [(ngModel)]="newJob.location" matInput required>
             </mat-form-field>
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Contact Email</mat-label>
-                <input matInput placeholder="pat@example.com" [formControl]="email">
+                <input [(ngModel)]="newJob.contactEmail" matInput required placeholder="pat@example.com"
+                    [formControl]="email">
             </mat-form-field>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-raised-button [mat-dialog-close]="true" color="primary">Publish</button>
+        <button mat-raised-button color="primary" (click)="publishJob()">Publish</button>
     </mat-dialog-actions>
 </div>
