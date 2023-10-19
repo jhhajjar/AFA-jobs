@@ -26,6 +26,6 @@ export class JobsService {
 
   postJob(newJob: Job): Observable<Job> {
     console.log(JSON.stringify(newJob));
-    return this.httpClient.post<Job>(`${this.backendURL}/createJob`, JSON.stringify(newJob))
+    return this.httpClient.post<Job>(`${this.backendURL}/createJob`, newJob)
   }
 }

@@ -12,9 +12,5 @@ export class ToolbarComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddjobmodalComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 }

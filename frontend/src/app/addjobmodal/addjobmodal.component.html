@@ -1,27 +1,34 @@
-<div class="add-job-modal">
+<div class="add-job-modal" [formGroup]="newJobForm">
     <h2 mat-dialog-title>Create New Job</h2>
     <mat-dialog-content class="mat-typography">
         <div class="add-job-form">
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Title</mat-label>
-                <input [(ngModel)]="newJob.title" matInput required>
+                <input formControlName="formTitle" matInput required>
             </mat-form-field>
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Description</mat-label>
-                <textarea [(ngModel)]="newJob.description" matInput required></textarea>
+                <textarea formControlName="formDescription" matInput required></textarea>
             </mat-form-field>
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Author</mat-label>
-                <input [(ngModel)]="newJob.author" matInput required>
+                <input formControlName="formAuthor" matInput required>
             </mat-form-field>
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Location</mat-label>
-                <input [(ngModel)]="newJob.location" matInput required>
+                <input formControlName="formLocation" matInput required>
+            </mat-form-field>
+            <mat-form-field class="add-job-modal-item">
+                <mat-label>Importance</mat-label>
+                <mat-select formControlName="formImportance">
+                    <mat-option value="Low Priority">Low Priority</mat-option>
+                    <mat-option value="Medium Priority">Medium Priority</mat-option>
+                    <mat-option value="High Priority">High Priority</mat-option>
+                </mat-select>
             </mat-form-field>
             <mat-form-field class="add-job-modal-item">
                 <mat-label>Contact Email</mat-label>
-                <input [(ngModel)]="newJob.contactEmail" matInput required placeholder="pat@example.com"
-                    [formControl]="email">
+                <input formControlName="formContactEmail" matInput required placeholder="pat@example.com">
             </mat-form-field>
         </div>
     </mat-dialog-content>

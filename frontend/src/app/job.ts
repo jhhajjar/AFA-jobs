@@ -4,5 +4,7 @@ export interface Job {
     description: string,
     author: string,
     location: string,
+    importance: number,
+    createdAt: Date,
     contactEmail: string
 }

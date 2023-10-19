@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Job } from '../job';
 import { MatDialogRef } from '@angular/material/dialog';
 import { JobsService } from '../jobs.service';
@@ -10,7 +10,7 @@ import { JobsService } from '../jobs.service';
   styleUrls: ['./addjobmodal.component.css']
 })
 export class AddjobmodalComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
+  newJobForm: FormGroup;
   newJob: Job
 
   constructor(
@@ -23,12 +23,32 @@ export class AddjobmodalComponent {
       description: '',
       author: '',
       location: '',
+      importance: -1,
+      createdAt: new Date(),
       contactEmail: '',
     }
+    this.newJobForm = new FormGroup({
+      formTitle: new FormControl('', Validators.required),
+      formDescription: new FormControl('', Validators.required),
+      formAuthor: new FormControl('', Validators.required),
+      formLocation: new FormControl('', Validators.required),
+      formImportance: new FormControl('', Validators.required),
+      formContactEmail: new FormControl('', [Validators.required, Validators.email]),
+    })
   }
 
   publishJob() {
-    if ((this.newJob.title) && (this.newJob.author) && (this.newJob.description) && (this.newJob.location) && (this.newJob.contactEmail)) {
+    if (this.newJobForm.valid) {
+      this.newJob = {
+        id: -1,
+        title: this.newJobForm.get('formTitle')?.value,
+        description: this.newJobForm.get('formDescription')?.value,
+        author: this.newJobForm.get('formAuthor')?.value,
+        location: this.newJobForm.get('formLocation')?.value,
+        importance: -1,
+        createdAt: new Date(),
+        contactEmail: this.newJobForm.get('formContactEmail')?.value,
+      }
       this.jobservice.postJob(this.newJob).subscribe(() => this.dialogRef.close())
     }
   }
