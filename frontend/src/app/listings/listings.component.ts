@@ -28,8 +28,6 @@ export class ListingsComponent implements OnInit {
   }
 
   openJobDetails(job: Job) {
-    console.log(job);
-
     this.matDialog.open(JobDetailsComponent, { data: job })
   }
 }
