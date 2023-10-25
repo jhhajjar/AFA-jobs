@@ -1,0 +1,12 @@
+.job-details-container {
+    min-width: 400px;
+    max-width: 800px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.description {
+    white-space: pre-wrap;
+}

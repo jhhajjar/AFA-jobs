@@ -16,11 +16,14 @@ type job struct {
 	Description  string `json:"description"`
 	Author       string `json:"author"`
 	Location     string `json:"location"`
-	ContactEmail string `json:"contact_email"`
+	Importance   int    `json:"importance"`
+	CreatedAt    string `json:"createdAt"`
+	ContactEmail string `json:"contactEmail"`
 }
 
 func checkErr(err error) {
 	if err != nil {
+		fmt.Println(err)
 		panic(err)
 	}
 }
@@ -40,7 +43,7 @@ func setupDB() *sql.DB {
 // - expertise
 func getAllJobs(c *gin.Context) {
 	var sqlq string = `
-		SELECT id, title, description, author, location, contact_email
+		SELECT id, title, description, author, location, importance, createdAt, contact_email
 		FROM jobs
 	`
 
@@ -50,10 +53,10 @@ func getAllJobs(c *gin.Context) {
 
 	var allJobs []job
 	for rows.Next() {
-		var id int
-		var title, description, author, location, contact_email string
+		var id, importance int
+		var title, description, author, location, contact_email, createdAt string
 
-		err = rows.Scan(&id, &title, &description, &author, &location, &contact_email)
+		err = rows.Scan(&id, &title, &description, &author, &location, &importance, &createdAt, &contact_email)
 		checkErr(err)
 
 		allJobs = append(allJobs, job{
@@ -62,6 +65,8 @@ func getAllJobs(c *gin.Context) {
 			Description:  description,
 			Author:       author,
 			Location:     location,
+			Importance:   importance,
+			CreatedAt:    createdAt,
 			ContactEmail: contact_email,
 		})
 	}
@@ -116,14 +121,15 @@ func retrieveJob(c *gin.Context) {
 func createJob(c *gin.Context) {
 	var newJob job
 	err := c.BindJSON(&newJob)
+	fmt.Println(newJob, err)
 	checkErr(err)
 
 	var sqlq string = `
-		INSERT INTO jobs (title, description, author, location, contact_email)
-		VALUES ($1, $2, $3, $4, $5)`
+		INSERT INTO jobs (title, description, author, location, importance, contact_email)
+		VALUES ($1, $2, $3, $4, $5, $6)`
 
 	var db *sql.DB = setupDB()
-	_, err = db.Exec(sqlq, newJob.Title, newJob.Description, newJob.Author, newJob.Location, newJob.ContactEmail)
+	_, err = db.Exec(sqlq, newJob.Title, newJob.Description, newJob.Author, newJob.Location, newJob.Importance, newJob.ContactEmail)
 	checkErr(err)
 
 	c.JSON(http.StatusCreated, "Successfully created new job")

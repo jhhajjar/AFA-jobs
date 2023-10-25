@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddjobmodalComponent } from './addjobmodal/addjobmodal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JobDetailsComponent } from './job-details/job-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListingsComponent,
     ToolbarComponent,
     SidepanelComponent,
-    AddjobmodalComponent
+    AddjobmodalComponent,
+    JobDetailsComponent
   ],
   imports: [
     BrowserModule,

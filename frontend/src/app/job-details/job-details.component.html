@@ -1,0 +1,22 @@
+<div class="job-details-container">
+    <h1 mat-dialog-title>{{jobInFocus.title | uppercase}}</h1>
+    <mat-dialog-content class="mat-typography">
+        <h3 class="bold">Job Description</h3>
+        <p class="description">{{jobInFocus.description}}</p>
+
+        <p><span class="bold">Posted by: </span>{{jobInFocus.author}}</p>
+
+        <p><span class="bold">Location: </span>{{jobInFocus.location}}</p>
+
+        <p><span class="bold">Urgency: </span>{{urgency}}</p>
+
+        <p><span class="bold">Posted on: </span>{{formattedDate}}</p>
+
+        <p><span class="bold">Contact email: </span>{{jobInFocus.contactEmail}}</p>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Contact</button>
+    </mat-dialog-actions>
+</div>

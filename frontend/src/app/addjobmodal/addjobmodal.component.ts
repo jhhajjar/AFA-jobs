@@ -12,6 +12,11 @@ import { JobsService } from '../jobs.service';
 export class AddjobmodalComponent {
   newJobForm: FormGroup;
   newJob: Job
+  importanceOptions: string[] = [
+    "Low Priority",
+    "Medium Priority",
+    "High Priority",
+  ]
 
   constructor(
     public dialogRef: MatDialogRef<AddjobmodalComponent>,
@@ -45,7 +50,7 @@ export class AddjobmodalComponent {
         description: this.newJobForm.get('formDescription')?.value,
         author: this.newJobForm.get('formAuthor')?.value,
         location: this.newJobForm.get('formLocation')?.value,
-        importance: -1,
+        importance: this.importanceOptions.indexOf(this.newJobForm.get('formImportance')?.value),
         createdAt: new Date(),
         contactEmail: this.newJobForm.get('formContactEmail')?.value,
       }

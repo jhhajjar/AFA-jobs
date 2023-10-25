@@ -8,6 +8,7 @@
     <ul>
         <li *ngFor="let job of jobs" class="example-card">
             <mat-card>
+                <p class="id-item">{{job.id}}</p>
                 <mat-card-header>
                     <mat-card-title>{{job.title | uppercase}}</mat-card-title>
                     <mat-card-subtitle>Posted by {{job.author}} | {{job.location}}</mat-card-subtitle>
@@ -16,7 +17,7 @@
                     <p>{{job.description}}</p>
                 </mat-card-content>
                 <mat-card-actions class="card-actions">
-                    <button mat-button>Open Details</button>
+                    <button mat-button (click)="openJobDetails(job)">Open Details</button>
                 </mat-card-actions>
             </mat-card>
         </li>

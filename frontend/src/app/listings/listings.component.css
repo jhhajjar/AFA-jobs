@@ -15,3 +15,7 @@
 .card-actions {
     justify-content: right;
 }
+
+.id-item {
+    display: none;
+}
