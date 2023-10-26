@@ -1,4 +1,4 @@
-.example-card {
+.job-card {
     list-style-type: none;
     max-width: 600px;
     margin: 0 0 2em 0;
@@ -10,12 +10,27 @@
     display: flex;
     justify-content: center;
     min-height: 400px;
+    background-color: rgba(165, 170, 170, 0.158);
+}
+
+.side-panel-container {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 3em;
+    min-width: 250px;
+    justify-content: center;
+}
+
+.filter-item {
+    width: 100%
 }
 
 .card-actions {
     justify-content: right;
 }
 
-.id-item {
-    display: none;
+.main-body {
+    display: inline-flex;
 }

@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListingsComponent } from './listings/listings.component';
-import { SidepanelComponent } from './sidepanel/sidepanel.component';
 import { JobsService } from './jobs.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +27,6 @@ import { PreviewPipe } from './preview';
     AppComponent,
     ListingsComponent,
     ToolbarComponent,
-    SidepanelComponent,
     AddjobmodalComponent,
     JobDetailsComponent,
     PreviewPipe
