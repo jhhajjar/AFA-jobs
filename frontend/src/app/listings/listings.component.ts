@@ -53,11 +53,11 @@ export class ListingsComponent implements OnInit {
   sortJobs() {
     if (this.sortBy == "Date Posted") {
       console.log("Sortiny by date posted");
-      this.jobsOnScreen = this.allJobsBackup.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
+      this.jobsOnScreen = this.jobsOnScreen.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
     }
     else if (this.sortBy == "Importance") {
       console.log("Sortiny by importance");
-      this.jobsOnScreen = this.allJobsBackup.sort((a, b) => (a.importance > b.importance ? -1 : 1))
+      this.jobsOnScreen = this.jobsOnScreen.sort((a, b) => (a.importance > b.importance ? -1 : 1))
     }
   }
 
