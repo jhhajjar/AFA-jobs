@@ -4,9 +4,11 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -29,10 +31,13 @@ func checkErr(err error) {
 }
 
 func setupDB() *sql.DB {
-	dbinfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", DB_IP, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME)
+	DB_IP, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME := os.Getenv("DB_IP"), os.Getenv("DB_PORT"), os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_NAME")
+	dbinfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", DB_IP, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME)
 	db, err := sql.Open("postgres", dbinfo)
 
 	checkErr(err)
+
+	fmt.Println("The variables:", dbinfo)
 
 	return db
 }
@@ -136,6 +141,11 @@ func createJob(c *gin.Context) {
 }
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("FYI, there is no .env file")
+	}
+
 	router := gin.Default()
 	router.Use(cors.Default())
 
@@ -143,9 +153,9 @@ func main() {
 	router.GET("/job/:jobid", retrieveJob)
 	router.POST("/createJob", createJob)
 
-	host := "localhost"
-	port := 8080
-	server := fmt.Sprintf("%s:%d", host, port)
+	host := "0.0.0.0"
+	port := os.Getenv("PORT")
+	server := fmt.Sprintf("%s:%s", host, port)
 	fmt.Println("Listening on", server)
 	http.ListenAndServe(server, router)
 }
