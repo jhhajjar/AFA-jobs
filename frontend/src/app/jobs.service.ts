@@ -12,7 +12,7 @@ export class JobsService {
     private httpClient: HttpClient
   ) { }
 
-  backendURL = "http://localhost:8080"
+  backendURL = "https://afa-jobs-production.up.railway.app"
 
   getJobs(): Observable<Job[]> {
     const jobs = this.httpClient.get<Job[]>(`${this.backendURL}/allJobs`)
