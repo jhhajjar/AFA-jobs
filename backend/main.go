@@ -146,6 +146,7 @@ func main() {
 		fmt.Println("FYI, there is no .env file")
 	}
 
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 	router.Use(cors.Default())
 
