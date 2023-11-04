@@ -150,6 +150,9 @@ func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
 
+	router.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, "Hello World!")
+	})
 	router.GET("/allJobs", getAllJobs)
 	router.GET("/job/:jobid", retrieveJob)
 	router.POST("/createJob", createJob)
